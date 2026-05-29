@@ -137,6 +137,9 @@ export default function App() {
                 <button className="pb-2 hover:text-white">
                     Analytics
                 </button>
+                <button className="pb-2 hover:text-white">
+                    Workspace
+                </button>
 
                 <button className="pb-2 hover:text-white">
                     Reports

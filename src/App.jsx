@@ -86,42 +86,52 @@ export default function App() {
             </div>
           </div>
 
-          <nav className="hidden lg:flex gap-8 text-sm text-white/70">
+            <nav className="hidden lg:flex relative gap-8 text-sm text-white/70">
             <button
-              onClick={() => setActivePage("overview")}
-              className={
+                onClick={() => setActivePage("overview")}
+                className={`pb-2 transition-colors ${
                 activePage === "overview"
-                  ? "text-white border-b-2 border-green-500 pb-1"
-                  : "hover:text-white"
-              }
+                    ? "text-white"
+                    : "hover:text-white"
+                }`}
             >
-              Overview
+                Overview
             </button>
 
             <button
-              onClick={() => setActivePage("operations")}
-              className={
+                onClick={() => setActivePage("operations")}
+                className={`pb-2 transition-colors ${
                 activePage === "operations"
-                  ? "text-white border-b-2 border-green-500 pb-1"
-                  : "hover:text-white"
-              }
+                    ? "text-white"
+                    : "hover:text-white"
+                }`}
             >
-              Operations
+                Operations
             </button>
 
-            <button className="hover:text-white">
-              Analytics
+            <button className="pb-2 hover:text-white">
+                Analytics
             </button>
 
-            <button className="hover:text-white">
-              Reports
+            <button className="pb-2 hover:text-white">
+                Reports
             </button>
 
-            <button className="hover:text-white">
-              Settings
+            <button className="pb-2 hover:text-white">
+                Settings
             </button>
-          </nav>
+
+            {/* Sliding Indicator */}
+            <div
+                className={`absolute bottom-0 h-[2px] bg-green-500 transition-all duration-300 ease-out ${
+                activePage === "overview"
+                    ? "left-0 w-[64px]"
+                    : "left-[96px] w-[76px]"
+                }`}
+            />
+            </nav>
         </div>
+
 
         <div className="w-8 h-8 rounded-full bg-green-500/20 border border-green-500/20"></div>
       </header>
@@ -229,7 +239,7 @@ export default function App() {
               {cards.map((card) => (
                 <div
                   key={card.title}
-                  className={`${card.span} h-[140px] rounded-2xl bg-[#04111D] border border-white/5 p-4 relative overflow-hidden`}
+                  className={`${card.span} h-[160px] rounded-2xl bg-[#04111D] border border-white/5 p-4 relative overflow-hidden`}
                 >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 blur-3xl"></div>
 

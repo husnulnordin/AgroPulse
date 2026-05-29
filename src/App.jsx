@@ -125,11 +125,7 @@ export default function App() {
 
             {/* Sliding Indicator */}
             <div
-                className={`absolute bottom-0 h-[2px] bg-green-500 transition-all duration-300 ease-out ${
-                activePage === "overview"
-                    ? "left-0 w-[64px]"
-                    : "left-[96px] w-[76px]"
-                }`}
+                
             />
             </nav>
         </div>

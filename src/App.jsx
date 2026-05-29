@@ -170,7 +170,14 @@ export default function App() {
                     )}
                 </button>
 
-                <button className="pb-2 hover:text-white">
+                <button
+                    onClick={() => setActivePage("agronomy")}
+                    className={`relative pb-2 transition-colors ${
+                    activePage === "operations"
+                        ? "text-white"
+                        : "hover:text-white"
+                    }`}
+                >
                     Agronomy
 
                     {activePage === "agronomy" && (
@@ -186,7 +193,14 @@ export default function App() {
                     )}
                 </button>
 
-                <button className="pb-2 hover:text-white">
+                <button
+                    onClick={() => setActivePage("workspace")}
+                    className={`relative pb-2 transition-colors ${
+                    activePage === "operations"
+                        ? "text-white"
+                        : "hover:text-white"
+                    }`}
+                >
                     Workspace
 
                     {activePage === "workspace" && (
@@ -202,12 +216,53 @@ export default function App() {
                     )}
                 </button>
 
-                <button className="pb-2 hover:text-white">
+                <button
+                    onClick={() => setActivePage("reports")}
+                    className={`relative pb-2 transition-colors ${
+                    activePage === "operations"
+                        ? "text-white"
+                        : "hover:text-white"
+                    }`}
+                >
                     Reports
+
+                    {activePage === "reports" && (
+                    <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                        transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35,
+                        }}
+                    />
+                    )}
+
                 </button>
 
-                <button className="pb-2 hover:text-white">
+                <button
+                    onClick={() => setActivePage("settings")}
+                    className={`relative pb-2 transition-colors ${
+                    activePage === "operations"
+                        ? "text-white"
+                        : "hover:text-white"
+                    }`}
+                >
+
+                    
                     Settings
+
+                    {activePage === "settings" && (
+                    <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                        transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35,
+                        }}
+                    />
+                    )}
                 </button>
                 </nav>
         </div>

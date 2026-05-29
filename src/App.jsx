@@ -87,51 +87,65 @@ export default function App() {
             </div>
           </div>
 
-            <nav className="hidden lg:flex relative gap-8 text-sm text-white/70">
-            <button
-                onClick={() => setActivePage("operations")}
-                className={`relative pb-2 transition-colors ${
-                    activePage === "operations"
-                    ? "text-white"
-                    : "hover:text-white"
-                }`}
+            <nav className="hidden lg:flex gap-8 text-sm text-white/70">
+                <button
+                    onClick={() => setActivePage("overview")}
+                    className={`relative pb-2 transition-colors ${
+                    activePage === "overview"
+                        ? "text-white"
+                        : "hover:text-white"
+                    }`}
                 >
-                Operations
+                    Overview
 
-                {activePage === "operations" && (
+                    {activePage === "overview" && (
                     <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
-                    transition={{
+                        layoutId="nav-indicator"
+                        className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                        transition={{
                         type: "spring",
                         stiffness: 500,
                         damping: 35,
-                    }}
+                        }}
                     />
-                )}
+                    )}
                 </button>
 
-            <button className="pb-2 hover:text-white">
-                Analytics
-            </button>
+                <button
+                    onClick={() => setActivePage("operations")}
+                    className={`relative pb-2 transition-colors ${
+                    activePage === "operations"
+                        ? "text-white"
+                        : "hover:text-white"
+                    }`}
+                >
+                    Operations
 
-            <button className="pb-2 hover:text-white">
-                Reports
-            </button>
+                    {activePage === "operations" && (
+                    <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                        transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35,
+                        }}
+                    />
+                    )}
+                </button>
 
-            <button className="pb-2 hover:text-white">
-                Settings
-            </button>
+                <button className="pb-2 hover:text-white">
+                    Analytics
+                </button>
 
-            {/* Sliding Indicator */}
-            <div
-                className={`absolute bottom-0 h-[2px] bg-green-500 transition-all duration-300 ease-out ${
-                activePage === "overview"
-                    ? "left-0 w-[64px]"
-                    : "left-[96px] w-[76px]"
-                }`}
-            />
-            </nav>
+                <button className="pb-2 hover:text-white">
+                    Reports
+                </button>
+
+                <button className="pb-2 hover:text-white">
+                    Settings
+                </button>
+                </nav>
         </div>
 
 

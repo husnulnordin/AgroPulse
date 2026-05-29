@@ -7,70 +7,106 @@ export default function App() {
   const [expanded, setExpanded] = useState(true);
   const [activePage, setActivePage] = useState("overview");
 
-  const overviewSidebar = [
-    "Estate Summary",
-    "Live Status",
-    "Alerts",
-    "Daily Activity",
-    "Heatmap",
-  ];
+  const pageConfig = {
+    overview: {
+      title: "OVERVIEW",
+      sidebar: [
+        "Estate Summary",
+        "Live Status",
+        "Alerts",
+        "Daily Activity",
+        "Heatmap",
+      ],
+      cards: [
+        { title: "Harvest Progress", value: "72%" },
+        { title: "Total Production (MT)", value: "124.8" },
+      ],
+    },
 
-  const operationsSidebar = [
-    "Production",
-    "Harvest",
-    "Upkeep",
-    "Weighbridge",
-    "Logistic",
-    "Expenditure",
-  ];
+    operations: {
+      title: "OPERATIONS",
+      sidebar: [
+        "Production",
+        "Harvest",
+        "Upkeep",
+        "Weighbridge",
+        "Logistic",
+        "Expenditure",
+      ],
+      cards: [
+        { title: "Total Production", value: "124.8 MT", span: "col-span-2" },
+        { title: "Avg Production", value: "18.4 MT", span: "col-span-2" },
+        { title: "FFB", value: "112.3 MT", span: "col-span-1" },
+        { title: "Loose Fruit", value: "8.4 MT", span: "col-span-1" },
+        { title: "Empty Bunch", value: "312", span: "col-span-1" },
+        { title: "Empty Fert Bag", value: "45", span: "col-span-1" },
+      ],
+    },
 
-  const overviewCards = [
-    { title: "Harvest Progress", value: "72%" },
-    { title: "Total Production (MT)", value: "124.8" },
-  ];
+    agronomy: {
+      title: "AGRONOMY",
+      sidebar: [
+        "Plant Health",
+        "Fertiliser",
+        "Pest & Disease",
+        "Soil Health",
+        "Scouting",
+        "Yield Forecast",
+      ],
+      cards: [
+        { title: "Plant Health Score", value: "N/A" },
+        { title: "Nutrient Status", value: "N/A" },
+        { title: "Pest Incidents", value: "N/A" },
+        { title: "Disease Incidents", value: "N/A" },
+        { title: "Scouting Coverage", value: "N/A" },
+      ],
+    },
 
-  const productionCards = [
-    {
-      title: "Total Production",
-      value: "124.8 MT",
-      span: "col-span-2",
+    workspace: {
+      title: "WORKSPACE",
+      sidebar: [
+        "My Tasks",
+        "Team Tasks",
+        "Approvals",
+        "Documents",
+        "Calendar",
+        "Notifications",
+      ],
+      cards: [
+        { title: "Open Tasks", value: "N/A" },
+        { title: "Overdue Tasks", value: "N/A" },
+        { title: "Pending Approvals", value: "N/A" },
+        { title: "Documents", value: "N/A" },
+        { title: "Notifications", value: "N/A" },
+      ],
     },
-    {
-      title: "Avg Production",
-      value: "18.4 MT",
-      span: "col-span-2",
-    },
-    {
-      title: "FFB",
-      value: "112.3 MT",
-      span: "col-span-1",
-    },
-    {
-      title: "Loose Fruit",
-      value: "8.4 MT",
-      span: "col-span-1",
-    },
-    {
-      title: "Empty Bunch",
-      value: "312",
-      span: "col-span-1",
-    },
-    {
-      title: "Empty Fert Bag",
-      value: "45",
-      span: "col-span-1",
-    },
-  ];
 
-  const sidebarItems =
-    activePage === "overview"
-      ? overviewSidebar
-      : operationsSidebar;
+    reports: {
+      title: "REPORTS",
+      sidebar: ["Coming Soon"],
+      cards: [
+        { title: "Monthly Reports", value: "N/A" },
+        { title: "Scheduled Reports", value: "N/A" },
+        { title: "Exports", value: "N/A" },
+        { title: "Generated Today", value: "N/A" },
+        { title: "Pending Jobs", value: "N/A" },
+      ],
+    },
 
-  const cards =
-    activePage === "overview"
-      ? overviewCards
-      : productionCards;
+    settings: {
+      title: "SETTINGS",
+      sidebar: ["Coming Soon"],
+      cards: [
+        { title: "Users", value: "N/A" },
+        { title: "Roles", value: "N/A" },
+        { title: "Estates", value: "N/A" },
+        { title: "Integrations", value: "N/A" },
+        { title: "System Health", value: "N/A" },
+      ],
+    },
+  };
+
+  const currentPage = pageConfig[activePage];
 
   return (
     <div className="min-h-screen bg-[#020B14] text-white overflow-hidden">
@@ -136,9 +172,34 @@ export default function App() {
 
                 <button className="pb-2 hover:text-white">
                     Agronomy
+
+                    {activePage === "agronomy" && (
+                    <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                        transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35,
+                        }}
+                    />
+                    )}
                 </button>
+
                 <button className="pb-2 hover:text-white">
                     Workspace
+
+                    {activePage === "workspace" && (
+                    <motion.div
+                        layoutId="nav-indicator"
+                        className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                        transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35,
+                        }}
+                    />
+                    )}
                 </button>
 
                 <button className="pb-2 hover:text-white">
@@ -160,13 +221,11 @@ export default function App() {
         {/* SIDEBAR */}
         <aside className="w-full lg:w-[220px] bg-[#04111D] rounded-2xl border border-white/5 p-4 flex flex-col">
           <div className="text-white/40 text-xs tracking-wider mb-5">
-            {activePage === "overview"
-              ? "OVERVIEW"
-              : "OPERATIONS"}
-          </div>
+             {currentPage.title}
+            </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
-            {sidebarItems.map((item, idx) => (
+            {currentPage.sidebar.map((item, idx) => (
               <button
                 key={item}
                 className={
@@ -225,7 +284,7 @@ export default function App() {
           {/* KPI SECTION */}
           {activePage === "overview" ? (
             <section className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-shrink-0">
-              {cards.map((card) => (
+              {currentPage.cards.map((card) => (
                 <div
                   key={card.title}
                   className="h-[160px] rounded-2xl bg-[#04111D] border border-white/5 p-5 relative overflow-hidden"
@@ -255,7 +314,7 @@ export default function App() {
             </section>
           ) : (
             <section className="grid grid-cols-8 gap-3 flex-shrink-0">
-              {cards.map((card) => (
+              {currentPage.cards.map((card) => (
                 <div
                   key={card.title}
                   className={`${card.span} h-[160px] rounded-2xl bg-[#04111D] border border-white/5 p-4 relative overflow-hidden`}

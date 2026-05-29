@@ -29,7 +29,6 @@ export default function App() {
             <button className="text-white border-b-2 border-green-500 pb-1">
               Overview
             </button>
-
             <button className="hover:text-white">Operations</button>
             <button className="hover:text-white">Harvest</button>
             <button className="hover:text-white">Upkeep</button>
@@ -43,7 +42,7 @@ export default function App() {
       </header>
 
       {/* MAIN LAYOUT */}
-      <div className="flex flex-col lg:flex-row h-auto lg:h-[calc(100vh-56px)] gap-3 p-3">
+      <div className="flex flex-col lg:flex-row lg:h-[calc(100vh-56px)] gap-3 p-3">
         {/* SIDEBAR */}
         <aside className="w-full lg:w-[220px] bg-[#04111D] rounded-2xl border border-white/5 p-4 flex flex-col">
           <div className="text-white/40 text-xs tracking-wider mb-5">
@@ -62,8 +61,8 @@ export default function App() {
                 key={item}
                 className={
                   idx === 0
-                    ? "w-full text-left px-4 py-3 rounded-xl transition-all bg-green-500/15 border border-green-500/20 text-white"
-                    : "w-full text-left px-4 py-3 rounded-xl transition-all text-white/70 hover:bg-white/5"
+                    ? "w-full text-left px-4 py-3 rounded-xl bg-green-500/15 border border-green-500/20 text-white"
+                    : "w-full text-left px-4 py-3 rounded-xl text-white/70 hover:bg-white/5"
                 }
               >
                 {item}
@@ -88,16 +87,15 @@ export default function App() {
         </aside>
 
         {/* RIGHT CONTENT */}
-        <main className="flex-1 flex flex-col gap-4">
+        <main className="flex-1 flex flex-col gap-4 h-full">
           {/* MAP SECTION */}
           <section
             className={
               expanded
-                ? "relative rounded-2xl overflow-hidden flex-1 min-h-[75vh] border border-white/5 transition-all duration-500"
-                : "relative rounded-2xl overflow-hidden h-[220px] border border-white/5 transition-all duration-500"
+                ? "relative flex-1 rounded-2xl overflow-hidden border border-white/5"
+                : "relative h-[220px] rounded-2xl overflow-hidden border border-white/5"
             }
           >
-            {/* MAP LOADER */}
             <EstateMap />
 
             {/* EXPAND BUTTON */}
@@ -116,11 +114,11 @@ export default function App() {
           </section>
 
           {/* KPI SECTION */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-shrink-0">
             {cards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-2xl bg-[#04111D] border border-white/5 p-5 relative overflow-hidden h-[180px]"
+                className="h-[160px] rounded-2xl bg-[#04111D] border border-white/5 p-5 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-3xl"></div>
 

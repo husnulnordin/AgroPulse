@@ -116,7 +116,7 @@ export default function App() {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 flex items-center justify-center">
                 <img
-                    src="/icon.png"
+                    src="/Icon.png"
                     alt="AgroPulse"
                     className="w-full h-full object-contain"
                 />

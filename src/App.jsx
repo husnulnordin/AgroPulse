@@ -1,6 +1,7 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import EstateMap from "./components/EstateMap";
+import { motion } from "framer-motion";
 
 export default function App() {
   const [expanded, setExpanded] = useState(true);
@@ -88,26 +89,27 @@ export default function App() {
 
             <nav className="hidden lg:flex relative gap-8 text-sm text-white/70">
             <button
-                onClick={() => setActivePage("overview")}
-                className={`pb-2 transition-colors ${
-                activePage === "overview"
-                    ? "text-white"
-                    : "hover:text-white"
-                }`}
-            >
-                Overview
-            </button>
-
-            <button
                 onClick={() => setActivePage("operations")}
-                className={`pb-2 transition-colors ${
-                activePage === "operations"
+                className={`relative pb-2 transition-colors ${
+                    activePage === "operations"
                     ? "text-white"
                     : "hover:text-white"
                 }`}
-            >
+                >
                 Operations
-            </button>
+
+                {activePage === "operations" && (
+                    <motion.div
+                    layoutId="nav-indicator"
+                    className="absolute left-0 right-0 -bottom-[1px] h-[2px] bg-green-500"
+                    transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 35,
+                    }}
+                    />
+                )}
+                </button>
 
             <button className="pb-2 hover:text-white">
                 Analytics
@@ -122,13 +124,7 @@ export default function App() {
             </button>
 
             {/* Sliding Indicator */}
-            <div
-                className={`absolute bottom-0 h-[2px] bg-green-500 transition-all duration-300 ease-out ${
-                activePage === "overview"
-                    ? "left-0 w-[64px]"
-                    : "left-[96px] w-[76px]"
-                }`}
-            />
+         
             </nav>
         </div>
 

@@ -114,9 +114,13 @@ export default function App() {
       <header className="h-14 border-b border-white/10 bg-[#01070F] flex items-center px-4 md:px-6 justify-between">
         <div className="flex items-center gap-4 md:gap-10">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded bg-white flex items-center justify-center">
-              <div className="w-5 h-5 border-2 border-green-500 rounded-sm"></div>
-            </div>
+            <div className="w-10 h-10 flex items-center justify-center">
+                <img
+                    src="/icon.png"
+                    alt="AgroPulse"
+                    className="w-full h-full object-contain"
+                />
+                </div>
 
             <div className="font-semibold text-sm md:text-lg whitespace-nowrap">
               Estate A / Block 23
